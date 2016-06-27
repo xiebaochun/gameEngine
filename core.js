@@ -1,11 +1,15 @@
 //game engine
 (function(){
-	var Engine = function() {
-		this.init();
+	var Engine = function(options) {
+		this.init(options);
 	}
-	var scale = 2;
+	//var scale = 2;
 	var eventObjects = [];
 	var p = Engine.prototype;
+
+	p.defaults = {
+		scale:2,
+	}
 
 	p.canvas = null;
 
@@ -32,20 +36,27 @@
 
 	p.loadProgressText = null;
 
-	p.scale = scale;
+	//p.scale = scale;
 	//event handler object set
 	
 
 	//init the game
-	p.init = function(){
+	p.init = function(options){
+		this.defaults = this.merge(this.defaults,options);
 		this.createCanvas();
 		this.addTouchEvent();
+	}
+	p.merge = function(objA,objB){
+		for(var attrname in objB){
+			objA[attrname] = objB[attrname];
+		}
+		return objA;
 	}
 	//create canvas used to draw game
 	p.createCanvas = function(){
 		canvas = document.createElement('canvas');
-		this.clientWidth = canvas.width = window.innerWidth*scale;
-		this.clientHeight = canvas.height = window.innerHeight*scale;
+		this.clientWidth = canvas.width = window.innerWidth*this.defaults.scale;
+		this.clientHeight = canvas.height = window.innerHeight*this.defaults.scale;
 
 		//alert( window.innerWidth+":"+window.innerHeight);
 		document.body.appendChild(canvas);
@@ -61,10 +72,10 @@
 		this.canvas.addEventListener('touchend',this.handleTouchEnd);
 	}
 	p.handleTouchStart = function(event){
-		console.log(event.targetTouches[0].pageX*scale);
-		console.log(event.targetTouches[0].pageY*scale);
-		var touchX = event.targetTouches[0].pageX*scale;
-		var touchY = event.targetTouches[0].pageY*scale;
+		console.log(event.targetTouches[0].pageX*this.default.scale);
+		console.log(event.targetTouches[0].pageY*this.default.scale);
+		var touchX = event.targetTouches[0].pageX*this.default.scale;
+		var touchY = event.targetTouches[0].pageY*this.default.scale;
 		for(var index in eventObjects){
 			var object = eventObjects[index];
 			var target = object.target;
