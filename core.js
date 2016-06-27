@@ -72,10 +72,10 @@
 		this.canvas.addEventListener('touchend',this.handleTouchEnd);
 	}
 	p.handleTouchStart = function(event){
-		console.log(event.targetTouches[0].pageX*this.default.scale);
-		console.log(event.targetTouches[0].pageY*this.default.scale);
-		var touchX = event.targetTouches[0].pageX*this.default.scale;
-		var touchY = event.targetTouches[0].pageY*this.default.scale;
+		console.log(event.targetTouches[0].pageX*this.defaults.scale);
+		console.log(event.targetTouches[0].pageY*this.defaults.scale);
+		var touchX = event.targetTouches[0].pageX*this.defaults.scale;
+		var touchY = event.targetTouches[0].pageY*this.defaults.scale;
 		for(var index in eventObjects){
 			var object = eventObjects[index];
 			var target = object.target;
