@@ -3,7 +3,7 @@
 	var Engine = function(options) {
 		this.init(options);
 	}
-	//var scale = 2;
+	var scale = 2;
 	var eventObjects = [];
 	var p = Engine.prototype;
 
@@ -43,6 +43,7 @@
 	//init the game
 	p.init = function(options){
 		this.defaults = this.merge(this.defaults,options);
+		scale = this.defaults.scale;
 		this.createCanvas();
 		this.addTouchEvent();
 	}
@@ -72,10 +73,10 @@
 		this.canvas.addEventListener('touchend',this.handleTouchEnd);
 	}
 	p.handleTouchStart = function(event){
-		console.log(event.targetTouches[0].pageX*this.defaults.scale);
-		console.log(event.targetTouches[0].pageY*this.defaults.scale);
-		var touchX = event.targetTouches[0].pageX*this.defaults.scale;
-		var touchY = event.targetTouches[0].pageY*this.defaults.scale;
+		console.log(event.targetTouches[0].pageX*scale);
+		console.log(event.targetTouches[0].pageY*scale);
+		var touchX = event.targetTouches[0].pageX*scale;
+		var touchY = event.targetTouches[0].pageY*scale;
 		for(var index in eventObjects){
 			var object = eventObjects[index];
 			var target = object.target;
