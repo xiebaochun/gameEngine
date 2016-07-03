@@ -1,0 +1,31 @@
+{
+  "name": "gameengine",
+  "version": "1.0.0",
+  "description": "canvas game engine",
+  "main": "core.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://xiebaochun:dandan520@github.com/xiebaochun/gameEngine.git"
+  },
+  "keywords": [
+    "game",
+    "engine",
+    "canvas"
+  ],
+  "author": "xiebaochun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiebaochun/gameEngine/issues"
+  },
+  "homepage": "https://github.com/xiebaochun/gameEngine#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
